@@ -605,7 +605,7 @@ importers:
         version: 5.8.2
       vitest:
         specifier: ^0.34.4
-        version: 0.34.6(happy-dom@11.2.0)(jsdom@16.7.0)(playwright@1.51.0)(terser@5.39.0)
+        version: 0.34.6(happy-dom@11.2.0)(jsdom@16.7.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(playwright@1.51.0)(terser@5.39.0)
 
   packages/eslint-config-gitcoin:
     dependencies:
@@ -663,6 +663,12 @@ importers:
       '@ethersproject/providers':
         specifier: ^5.7.2
         version: 5.8.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
+      '@farcaster/frame-sdk':
+        specifier: ^0.0.34
+        version: 0.0.34(typescript@5.8.2)(zod@3.24.2)
+      '@farcaster/frame-wagmi-connector':
+        specifier: ^0.0.22
+        version: 0.0.22(@farcaster/frame-sdk@0.0.34(typescript@5.8.2)(zod@3.24.2))(@wagmi/core@2.10.5(@tanstack/query-core@5.40.0)(@types/react@18.3.18)(bufferutil@4.0.9)(immer@10.1.1)(react@18.3.1)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.13.10(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(zod@3.24.2))(viem@2.13.10(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))
       '@headlessui/react':
         specifier: ^1.7.4
         version: 1.7.19(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1304,7 +1310,7 @@ importers:
         version: 5.8.2
       vitest:
         specifier: ^0.34.2
-        version: 0.34.6(happy-dom@11.2.0)(jsdom@16.7.0)(playwright@1.51.0)(terser@5.39.0)
+        version: 0.34.6(happy-dom@11.2.0)(jsdom@16.7.0(bufferutil@4.0.9)(utf-8-validate@5.0.10))(playwright@1.51.0)(terser@5.39.0)
 
 packages:
 
@@ -3456,6 +3462,19 @@ packages:
   '@faker-js/faker@8.4.1':
     resolution: {integrity: sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0, npm: '>=6.14.13'}
+
+  '@farcaster/frame-core@0.0.31':
+    resolution: {integrity: sha512-sZHG4Jt9aXqzdod+WksNtIKGgSuxBxJ2i3Fx1uAzeK29L1W/Osfsp3ZCpilEOjNHB9iRTqtGH7VKp3CPf312hA==}
+
+  '@farcaster/frame-sdk@0.0.34':
+    resolution: {integrity: sha512-szPyiP3EWyX/CBskDIb4QF+X+lB4vy8mtyWwZfInBw/yXD/k73bFxAtzH88BVsTFI1220T6Erb35sJeme04tMQ==}
+
+  '@farcaster/frame-wagmi-connector@0.0.22':
+    resolution: {integrity: sha512-CVWvezX/K3MoXrG3nJI1ifC3FYlNaoDVKstFLQ7KtF2nOaZ7bW7yXkI4lsFRHBVekdtN3X7dIFrbC6n6EmKYqw==}
+    peerDependencies:
+      '@farcaster/frame-sdk': ^0.0.34
+      '@wagmi/core': ^2.14.1
+      viem: ^2.21.55
 
   '@fastify/busboy@2.1.1':
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
@@ -5980,17 +5999,18 @@ packages:
 
   '@walletconnect/sign-client@2.13.0':
     resolution: {integrity: sha512-En7KSvNUlQFx20IsYGsFgkNJ2lpvDvRsSFOT5PTdGskwCkUfOpB33SQJ6nCrN19gyoKPNvWg80Cy6MJI0TjNYA==}
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/sign-client@2.19.1':
     resolution: {integrity: sha512-OgBHRPo423S02ceN3lAzcZ3MYb1XuLyTTkKqLmKp/icYZCyRzm3/ynqJDKndiBLJ5LTic0y07LiZilnliYqlvw==}
 
   '@walletconnect/sign-client@2.7.0':
     resolution: {integrity: sha512-K99xa6GSFS04U+140yrIEi/VJJJ0Q1ov4jCaiqa9euILDKxlBsM7m5GR+9sq6oYyj18SluJY4CJTdeOXUJlarA==}
-    deprecated: Reliability and performance greatly improved - please see https://github.com/WalletConnect/walletconnect-monorepo/releases
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/sign-client@2.9.0':
     resolution: {integrity: sha512-mEKc4LlLMebCe45qzqh+MX4ilQK4kOEBzLY6YJpG8EhyT45eX4JMNA7qQoYa9MRMaaVb/7USJcc4e3ZrjZvQmA==}
-    deprecated: Reliability and performance greatly improved - please see https://github.com/WalletConnect/walletconnect-monorepo/releases
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/signer-connection@1.8.0':
     resolution: {integrity: sha512-+YAaTAP52MWZJ2wWnqKClKCPlPHBo6reURFe0cWidLADh9mi/kPWGALZ5AENK22zpem1bbKV466rF5Rzvu0ehA==}
@@ -6234,6 +6254,7 @@ packages:
 
   acorn-import-assertions@1.9.0:
     resolution: {integrity: sha512-cmMwop9x+8KFhxvKrKfPYmN6/pKTYYHBqLa0DfvVZcKMJWNyWLnaqND7dx/qn66R7ewM1UX5XMaDVP5wlVTaVA==}
+    deprecated: package has been renamed to acorn-import-attributes
     peerDependencies:
       acorn: ^8
 
@@ -7325,6 +7346,9 @@ packages:
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
+
+  comlink@4.4.2:
+    resolution: {integrity: sha512-OxGdvBmJuNKSCMO4NTl1L47VRp6xn2wG4F/2hYzB6tiCb709otOxtEYCSvK80PtjODfXXZu8ds+Nw5kVCjqd2g==}
 
   command-exists@1.2.9:
     resolution: {integrity: sha512-LTQ/SGc+s0Xc0Fu5WaKnR0YiygZkm9eKFvyS+fRsU7/ZWFF8ykFM6Pc9aCVf1+xasOOZpO3BAVgVrKvsqKHV7w==}
@@ -11291,6 +11315,7 @@ packages:
 
   lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    deprecated: This package is deprecated. Use require('node:util').isDeepStrictEqual instead.
 
   lodash.isfunction@3.0.9:
     resolution: {integrity: sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==}
@@ -12178,6 +12203,14 @@ packages:
   own-keys@1.0.1:
     resolution: {integrity: sha512-qFOyK5PjiWZd+QQIh+1jhdb9LpxTF0qs7Pm8o5QHYZ0M3vKqSqzsZaEB6oWlxZ+q2sJBMI/Ktgd2N5ZwQoRHfg==}
     engines: {node: '>= 0.4'}
+
+  ox@0.4.4:
+    resolution: {integrity: sha512-oJPEeCDs9iNiPs6J0rTx+Y0KGeCGyCAA3zo94yZhm8G5WpOxrwUtn2Ie/Y8IyARSqqY/j9JTKA3Fc1xs1DvFnw==}
+    peerDependencies:
+      typescript: '>=5.4.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   ox@0.6.7:
     resolution: {integrity: sha512-17Gk/eFsFRAZ80p5eKqv89a57uXjd3NgIf1CaXojATPBuujVc/fQSVhBeAU9JCRB+k7J50WQAyWTxK19T9GgbA==}
@@ -19557,6 +19590,29 @@ snapshots:
 
   '@faker-js/faker@8.4.1': {}
 
+  '@farcaster/frame-core@0.0.31(typescript@5.8.2)':
+    dependencies:
+      ox: 0.4.4(typescript@5.8.2)(zod@3.24.2)
+      zod: 3.24.2
+    transitivePeerDependencies:
+      - typescript
+
+  '@farcaster/frame-sdk@0.0.34(typescript@5.8.2)(zod@3.24.2)':
+    dependencies:
+      '@farcaster/frame-core': 0.0.31(typescript@5.8.2)
+      comlink: 4.4.2
+      eventemitter3: 5.0.1
+      ox: 0.4.4(typescript@5.8.2)(zod@3.24.2)
+    transitivePeerDependencies:
+      - typescript
+      - zod
+
+  '@farcaster/frame-wagmi-connector@0.0.22(@farcaster/frame-sdk@0.0.34(typescript@5.8.2)(zod@3.24.2))(@wagmi/core@2.10.5(@tanstack/query-core@5.40.0)(@types/react@18.3.18)(bufferutil@4.0.9)(immer@10.1.1)(react@18.3.1)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.13.10(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(zod@3.24.2))(viem@2.13.10(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))':
+    dependencies:
+      '@farcaster/frame-sdk': 0.0.34(typescript@5.8.2)(zod@3.24.2)
+      '@wagmi/core': 2.10.5(@tanstack/query-core@5.40.0)(@types/react@18.3.18)(bufferutil@4.0.9)(immer@10.1.1)(react@18.3.1)(typescript@5.8.2)(utf-8-validate@5.0.10)(viem@2.13.10(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(zod@3.24.2)
+      viem: 2.13.10(bufferutil@4.0.9)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
+
   '@fastify/busboy@2.1.1': {}
 
   '@floating-ui/core@1.6.9':
@@ -19865,7 +19921,7 @@ snapshots:
   '@jest/console@28.1.3':
     dependencies:
       '@jest/types': 28.1.3
-      '@types/node': 18.19.80
+      '@types/node': 20.17.24
       chalk: 4.1.2
       jest-message-util: 28.1.3
       jest-util: 28.1.3
@@ -22284,7 +22340,7 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 18.19.80
+      '@types/node': 20.17.24
 
   '@types/cookie@0.4.1': {}
 
@@ -22298,7 +22354,7 @@ snapshots:
 
   '@types/dns-packet@5.6.5':
     dependencies:
-      '@types/node': 18.19.80
+      '@types/node': 20.17.24
 
   '@types/dom-screen-wake-lock@1.0.3': {}
 
@@ -22507,7 +22563,7 @@ snapshots:
 
   '@types/resolve@1.17.1':
     dependencies:
-      '@types/node': 18.19.80
+      '@types/node': 20.17.24
 
   '@types/resolve@1.20.2': {}
 
@@ -22933,7 +22989,7 @@ snapshots:
       std-env: 3.8.1
       test-exclude: 6.0.0
       v8-to-istanbul: 9.3.0
-      vitest: 0.34.6(happy-dom@11.2.0)(jsdom@16.7.0)(playwright@1.51.0)(terser@5.39.0)
+      vitest: 0.34.6(happy-dom@11.2.0)(jsdom@16.7.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(playwright@1.51.0)(terser@5.39.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -26009,6 +26065,8 @@ snapshots:
     dependencies:
       delayed-stream: 1.0.0
 
+  comlink@4.4.2: {}
+
   command-exists@1.2.9: {}
 
   command-line-args@5.2.1:
@@ -27728,7 +27786,7 @@ snapshots:
       eslint: 8.57.1
     optionalDependencies:
       '@typescript-eslint/eslint-plugin': 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.8.2))(eslint@8.57.1)(typescript@5.8.2)
-      vitest: 0.34.6(happy-dom@11.2.0)(jsdom@16.7.0)(playwright@1.51.0)(terser@5.39.0)
+      vitest: 0.34.6(happy-dom@11.2.0)(jsdom@16.7.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(playwright@1.51.0)(terser@5.39.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -30829,7 +30887,7 @@ snapshots:
 
   jest-serializer@26.6.2:
     dependencies:
-      '@types/node': 18.19.80
+      '@types/node': 20.17.24
       graceful-fs: 4.2.11
 
   jest-serializer@27.5.1:
@@ -30969,7 +31027,7 @@ snapshots:
 
   jest-worker@26.6.2:
     dependencies:
-      '@types/node': 18.19.80
+      '@types/node': 20.17.24
       merge-stream: 2.0.0
       supports-color: 7.2.0
 
@@ -32996,6 +33054,20 @@ snapshots:
       get-intrinsic: 1.3.0
       object-keys: 1.1.1
       safe-push-apply: 1.0.0
+
+  ox@0.4.4(typescript@5.8.2)(zod@3.24.2):
+    dependencies:
+      '@adraffy/ens-normalize': 1.11.0
+      '@noble/curves': 1.8.1
+      '@noble/hashes': 1.7.1
+      '@scure/bip32': 1.6.2
+      '@scure/bip39': 1.5.4
+      abitype: 1.0.8(typescript@5.8.2)(zod@3.24.2)
+      eventemitter3: 5.0.1
+    optionalDependencies:
+      typescript: 5.8.2
+    transitivePeerDependencies:
+      - zod
 
   ox@0.6.7(typescript@5.8.2)(zod@3.24.2):
     dependencies:
@@ -36998,7 +37070,7 @@ snapshots:
       - supports-color
       - terser
 
-  vitest@0.34.6(happy-dom@11.2.0)(jsdom@16.7.0)(playwright@1.51.0)(terser@5.39.0):
+  vitest@0.34.6(happy-dom@11.2.0)(jsdom@16.7.0(bufferutil@4.0.9)(utf-8-validate@6.0.5))(playwright@1.51.0)(terser@5.39.0):
     dependencies:
       '@types/chai': 4.3.20
       '@types/chai-subset': 1.3.6(@types/chai@4.3.20)

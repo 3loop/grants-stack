@@ -12,7 +12,6 @@ const plugins = [
   new webpack.ProvidePlugin({
     Buffer: ["buffer", "Buffer"],
   }),
-  new VerifyEnvPlugin(),
 ];
 
 module.exports = {

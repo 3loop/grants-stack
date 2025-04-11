@@ -55,7 +55,7 @@ export default function CartNotification(props: {
                     className="px-3 bg-violet-400 text-white border-0 text-xs mb-2"
                     onClick={() => {
                       const url = "#/cart";
-                      window.open(url, "_blank");
+                      window.open(url, "_self");
                     }}
                   >
                     View my cart
