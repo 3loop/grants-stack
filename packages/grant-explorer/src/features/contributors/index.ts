@@ -1,1 +1,0 @@
-export { ViewContributionHistoryPage } from "./ViewContributionHistoryPage";

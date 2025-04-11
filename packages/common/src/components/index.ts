@@ -1,1 +1,0 @@
-export { NavbarGeneric } from "./NavbarGeneric";
