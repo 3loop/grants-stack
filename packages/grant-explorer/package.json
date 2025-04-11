@@ -43,6 +43,8 @@
     "@ethereum-attestation-service/eas-contracts": "1.7.1",
     "@ethersproject/abstract-signer": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
+    "@farcaster/frame-sdk": "^0.0.34",
+    "@farcaster/frame-wagmi-connector": "^0.0.22",
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "@playwright/test": "^1.41.1",

@@ -1,11 +1,19 @@
 import "@rainbow-me/rainbowkit/styles.css";
 import { QueryClient } from "@tanstack/react-query";
-import { Chain as RChain, getDefaultConfig } from "@rainbow-me/rainbowkit";
+import { Chain as RChain } from "@rainbow-me/rainbowkit";
 import { allNetworks, mainnetNetworks } from "common/src/chains";
-import { getClient, getConnectorClient } from "@wagmi/core";
+import { getClient, getConnectorClient, injected } from "@wagmi/core";
 import { providers } from "ethers";
-import { type Account, type Chain, type Client, type Transport } from "viem";
-import { Connector } from "wagmi";
+import {
+  http,
+  type Account,
+  type Chain,
+  type Client,
+  type Transport,
+} from "viem";
+import { Connector, createConfig } from "wagmi";
+import { farcasterFrame } from "./farcasterFrame";
+import { arbitrum, base } from "viem/chains";
 
 export const allChains: RChain[] =
   process.env.REACT_APP_ENV === "development" ? allNetworks : mainnetNetworks;
@@ -15,10 +23,13 @@ const projectId =
   process.env.REACT_APP_WALLETCONNECT_PROJECT_ID ??
   "2685061cae0bcaf2b244446153eda9e1";
 
-export const config = getDefaultConfig({
-  appName: "Gitcoin Explorer",
-  projectId,
-  chains: [...allChains] as [Chain, ...Chain[]],
+export const config = createConfig({
+  chains: [base, arbitrum],
+  transports: {
+    [base.id]: http(),
+    [arbitrum.id]: http(),
+  },
+  connectors: [farcasterFrame(), injected()],
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) as any;
 

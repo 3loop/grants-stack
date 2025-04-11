@@ -7,6 +7,7 @@ import {
 } from "react";
 import { Round } from "../features/api/types";
 import { DataLayer, useDataLayer } from "data-layer";
+import sdk from "@farcaster/frame-sdk"
 
 export interface RoundState {
   rounds: Round[];
@@ -83,6 +84,14 @@ const roundReducer = (state: RoundState, action: Action) => {
 export const RoundProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(roundReducer, initialRoundState);
   const providerProps = { state, dispatch };
+  useEffect(() => {
+    const load = async () => {
+      await sdk.actions.ready()
+    }
+    if (sdk) {
+      load()
+    }
+  }, [])
 
   return (
     <RoundContext.Provider value={providerProps}>
