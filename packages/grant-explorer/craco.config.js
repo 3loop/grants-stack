@@ -37,6 +37,7 @@ module.exports = {
         url: require.resolve('url'),
         buffer: require.resolve("buffer"),
         process: require.resolve("process/browser"),
+        vm: require.resolve("vm-browserify"),
       };
 
       // Add resolve aliases

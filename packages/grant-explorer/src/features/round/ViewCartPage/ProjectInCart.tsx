@@ -114,7 +114,7 @@ export function ProjectInCart(
                 ).toFixed(2)}
               </span>
               {props.showMatchingEstimate && (
-                <span className="text-teal-500 italic text-sm">
+                <span className="text-teal-500 italic text-sm hidden sm:inline-block">
                   ~{props.matchingEstimateUSD?.toFixed(2) || 0} USD
                 </span>
               )}

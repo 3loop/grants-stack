@@ -42,7 +42,7 @@ export default function ViewCart() {
 
   const [openSwapModel, setOpenSwapModal] = useState<boolean>(false);
   const [swapParams, setSwapParams] = useState<SwapParams>({
-    fromChainId: "1",
+    fromChainId: "8453",
     toChainId: "42161",
     fromTokenAddress: NATIVE,
     toTokenAddress: NATIVE,
@@ -238,7 +238,7 @@ export default function ViewCart() {
   return (
     <>
       <Navbar />
-      <div className="relative top-28 lg:mx-20 h-screen sm:px-4 px-2 py-7 lg:pt-0 font-sans">
+      <div className="relative top-28 lg:mx-20 min-h-screen h-auto sm:px-4 px-2 py-7 lg:pt-0 font-sans">
         <div className="flex flex-col pb-4" data-testid="bread-crumbs">
           <Breadcrumb items={breadCrumbs} />
         </div>
@@ -255,10 +255,10 @@ export default function ViewCart() {
                 />
               </>
             ) : (
-              <div className={"grid sm:grid-cols-3 gap-5 w-full"}>
-                <div className="flex flex-col gap-5 sm:col-span-2 order-2 sm:order-1">
+              <div className={"grid grid-cols-1 sm:grid-cols-3 gap-5 w-full"}>
+                <div className="flex flex-col gap-5 sm:col-span-2 order-1">
                   {Object.keys(groupedCartProjects).map((chainId) => (
-                    <div key={Number(chainId)}>
+                    <div key={Number(chainId)} className="w-full">
                       <CartWithProjects
                         cart={groupedCartProjects[Number(chainId)]}
                         chainId={Number(chainId) as number}
@@ -271,7 +271,7 @@ export default function ViewCart() {
                     </div>
                   ))}
                 </div>
-                <div className="sm:col-span-1 order-1 sm:order-2">
+                <div className="sm:col-span-1 order-2 mb-6 sm:mb-0">
                   <SummaryContainer
                     enoughBalanceByChainId={enoughBalanceByChainId}
                     totalAmountByChainId={totalAmountByChainId}
@@ -282,10 +282,11 @@ export default function ViewCart() {
             )}
           </div>
           <GenericModal
-            isIframe={true}
             body={<SquidWidget {...swapParams} />}
             isOpen={openSwapModel}
             setIsOpen={swapModalHandler}
+            className="z-50"
+            isIframe={true}
           />
         </main>
         <div className="my-11">

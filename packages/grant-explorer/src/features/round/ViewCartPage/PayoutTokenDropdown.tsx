@@ -15,14 +15,14 @@ export function PayoutTokenDropdown(props: {
   balanceWarning: boolean;
 }) {
   return (
-    <div className="mt-1 relative col-span-6 sm:col-span-3">
+    <div className="relative">
       <Listbox
         value={props.selectedPayoutToken}
         onChange={props.setSelectedPayoutToken}
       >
         {({ open }) => (
           <div>
-            <div className="mb-2 shadow-sm block rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+            <div className="shadow-sm block rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
               <PayoutTokenButton
                 token={props.payoutTokenOptions.find(
                   (t) => t.address === props.selectedPayoutToken?.address
@@ -43,8 +43,8 @@ export function PayoutTokenDropdown(props: {
                 leaveTo="opacity-0"
               >
                 <Listbox.Options
-                  className={`absolute z-10 mt-1 ' ${props.style ? props.style : "max-h-56"}
-                   w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm`}
+                  className={`absolute z-20 mt-1 right-0 sm:right-auto ' ${props.style ? props.style : "max-h-56"}
+                   w-64 sm:w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm`}
                 >
                   {props.payoutTokenOptions
                     .filter(

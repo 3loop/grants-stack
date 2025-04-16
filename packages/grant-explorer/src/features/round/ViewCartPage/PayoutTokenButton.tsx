@@ -14,7 +14,7 @@ export function PayoutTokenButton(props: {
   const { token, balance } = props;
   return (
     <Listbox.Button
-      className="relative w-[250px] md:w-[250px] cursor-default rounded-md border h-10 border-gray-300 bg-white py-2 pl-3 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-xs md:text-sm"
+      className="relative w-full min-w-[120px] max-w-[250px] cursor-default rounded-md border h-10 border-gray-300 bg-white py-2 pl-3 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 text-xs md:text-sm"
       data-testid="payout-token-select"
     >
       <span className="flex items-center">
@@ -26,23 +26,23 @@ export function PayoutTokenButton(props: {
           />
         )}
         <span
-          className={`ml-2 block truncate text-sm md:text-md ${
+          className={`ml-2 block truncate text-sm ${
             token?.default ? "text-gray-500" : ""
           }`}
         >
           {token?.code}
         </span>
         <span
-          className={`ml-3 text-sm ${
+          className={`ml-2 text-xs md:text-sm hidden sm:inline-block ${
             props.balanceWarning ? "text-red-600" : "text-gray-500"
           }`}
         >
           {balance && (
             <div className="flex items-center">
               {props.balanceWarning && (
-                <ExclamationCircleIcon className="w-4 mr-2" />
+                <ExclamationCircleIcon className="w-4 mr-1" />
               )}
-              Balance: {balance.formattedAmount.toFixed(3)}
+              <span className="hidden md:inline">Balance:</span> {balance.formattedAmount.toFixed(3)}
             </div>
           )}
         </span>

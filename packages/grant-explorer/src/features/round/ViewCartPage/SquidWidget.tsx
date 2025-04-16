@@ -1,5 +1,5 @@
 import { SquidWidget as Squid } from "@0xsquid/widget";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export type SwapParams = {
   fromChainId: string;
@@ -14,80 +14,29 @@ const SquidWidget = ({
   fromTokenAddress,
   toTokenAddress,
 }: SwapParams) => {
-  const [hasError, setHasError] = useState(false);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile viewport on mount and window resize
   useEffect(() => {
-    // Safety check for potential errors
-    const timer = setTimeout(() => {
-      const squidElement = document.querySelector('[data-testid="squid-widget"]');
-      if (!squidElement) {
-        console.warn("Squid widget not loaded correctly, falling back to iframe");
-        setHasError(true);
-      }
-    }, 3000);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
     
-    return () => clearTimeout(timer);
+    // Initial check
+    checkMobile();
+    
+    // Set up resize listener
+    window.addEventListener("resize", checkMobile);
+    
+    // Clean up
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // If there's an error with React widget, fall back to iframe
-  if (hasError) {
-    const config = {
-      integratorId: "gitcoin-50ed7b9e-5407-48c2-9b94-f443b53f6cd4",
-      instantExec: true,
-      apiUrl: "https://apiplus.squidrouter.com",
-      initialAssets: {
-        from: {
-          chainId: fromChainId,
-          address: fromTokenAddress?.toLowerCase() || "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-        },
-        to: {
-          chainId: toChainId,
-          address: toTokenAddress?.toLowerCase() || "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-        },
-      },
-      disabledChains: {
-        source: ["pacific-1", "osmosis-1"],
-        destination: ["pacific-1", "osmosis-1"]
-      },
-    };
-
-    const configString = encodeURIComponent(JSON.stringify(config));
-    const iframeUrl = `https://studio.squidrouter.com/iframe?config=${configString}`;
-
-    return (
-      <div style={{ position: "relative", width: "500px", height: "684px" }}>
-        <iframe
-          title="squid_widget"
-          width="500"
-          height="684"
-          src={iframeUrl}
-          style={{ display: "block" }}
-        />
-      </div>
-    );
-  }
-
-  // React widget configuration
+  // React widget configuration following official documentation
   const config = {
     integratorId: "gitcoin-50ed7b9e-5407-48c2-9b94-f443b53f6cd4",
     apiUrl: "https://apiplus.squidrouter.com",
-    companyName: "Gitcoin",
-    style: {
-      neutralContent: "#667085",
-      baseContent: "#111827",
-      base100: "#F9FAFB",
-      base200: "#F3F4F6",
-      base300: "#E5E7EB",
-      error: "#EF4444",
-      warning: "#F59E0B",
-      success: "#10B981",
-      primary: "#00B171",
-      secondary: "#9CA3AF",
-      secondaryContent: "#1F2937",
-      neutral: "#9CA3AF",
-      roundedBtn: "8px",
-      roundedBox: "12px",
-    },
+    themeType: "dark" as const,
     initialAssets: {
       from: {
         chainId: fromChainId,
@@ -98,14 +47,23 @@ const SquidWidget = ({
         address: toTokenAddress?.toLowerCase() || "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       },
     },
-    disabledChains: {
-      source: ["pacific-1", "osmosis-1"],
-      destination: ["pacific-1", "osmosis-1"]
+    availableChains: {
+      source: ["8453", "1"],
+      destination: ["42161"]
     },
+    slippage: 1,
+    hideAnimations: true, // Reduces height requirements
   };
 
   return (
-    <div style={{ width: "500px", height: "684px" }}>
+    <div style={{ 
+      width: '100%',
+      maxWidth: isMobile ? '100%' : '500px',
+      height: isMobile ? '100%' : 'auto',
+      margin: '0 auto',
+      overflow: 'hidden', // Hide scrollbar completely
+      position: 'relative'
+    }}>
       <Squid config={config} />
     </div>
   );

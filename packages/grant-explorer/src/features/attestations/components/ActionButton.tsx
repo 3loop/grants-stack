@@ -25,7 +25,7 @@ export const ActionButton = ({
 }) => {
   const [openSwapModel, setOpenSwapModal] = useState<boolean>(false);
   const swapParams = {
-    fromChainId: "1",
+    fromChainId: "8453",
     toChainId: "42161",
     fromTokenAddress: NATIVE,
     toTokenAddress: NATIVE,
